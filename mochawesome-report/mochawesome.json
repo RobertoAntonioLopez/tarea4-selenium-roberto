@@ -1,0 +1,715 @@
+{
+  "stats": {
+    "suites": 8,
+    "tests": 10,
+    "passes": 10,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-12-02T01:31:40.488Z",
+    "end": "2025-12-02T01:31:55.015Z",
+    "duration": 14527,
+    "testsRegistered": 10,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7f980964-e6c9-425b-afbd-28abffa655e2",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d0659ada-956a-4c55-a6d5-e95c363ecba1",
+          "title": "Login - Pruebas negativas",
+          "fullFile": "/home/robbie/Desktop/proyectos_personales/tarea4-selenium/tests/login_negative.test.js",
+          "file": "/tests/login_negative.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Login - Pruebas negativas\"",
+              "fullTitle": "Login - Pruebas negativas \"before each\" hook in \"Login - Pruebas negativas\"",
+              "timedOut": false,
+              "duration": 338,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();",
+              "err": {},
+              "uuid": "a7bfbf97-a5fc-495d-bbce-6871689700f0",
+              "parentUUID": "d0659ada-956a-4c55-a6d5-e95c363ecba1",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Login - Pruebas negativas\"",
+              "fullTitle": "Login - Pruebas negativas \"after each\" hook in \"Login - Pruebas negativas\"",
+              "timedOut": false,
+              "duration": 51,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "a1536db6-9226-457f-ae86-678aaaad5504",
+              "parentUUID": "d0659ada-956a-4c55-a6d5-e95c363ecba1",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "No debe permitir iniciar sesión con credenciales inválidas",
+              "fullTitle": "Login - Pruebas negativas No debe permitir iniciar sesión con credenciales inválidas",
+              "timedOut": false,
+              "duration": 781,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  await driver.get(`${BASE_URL}/login`);\n  const usernameInput = await driver.findElement(By.id(\"username\"));\n  const passwordInput = await driver.findElement(By.id(\"password\"));\n  const loginButton   = await driver.findElement(By.id(\"btnLogin\"));\n  // Usamos credenciales incorrectas\n  await usernameInput.sendKeys(\"usuario_malo\");\n  await passwordInput.sendKeys(\"clave_mala\");\n  await loginButton.click();\n  // Esperar a que recargue la página de login con el mensaje de error\n  await driver.wait(until.elementLocated(By.id(\"loginError\")), 10000);\n  const errorMessage = await driver.findElement(By.id(\"loginError\"));\n  const text = await errorMessage.getText();\n  // Comprobar que el mensaje de error es visible y tiene el texto esperado\n  expect(await errorMessage.isDisplayed()).to.be.true;\n  expect(text).to.include(\"Credenciales inválidas\");\n  await takeScreenshot(driver, \"login-negativo-credenciales-invalidas\");\n} catch (error) {\n  await takeScreenshot(driver, \"login-negativo-error\");\n  throw error;\n}",
+              "err": {},
+              "uuid": "299212f0-daef-49f6-9f54-5116ef40469d",
+              "parentUUID": "d0659ada-956a-4c55-a6d5-e95c363ecba1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "299212f0-daef-49f6-9f54-5116ef40469d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 781,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "733f0e81-80cd-4cb8-9b31-add5f6bd7b1a",
+          "title": "Login - Camino feliz",
+          "fullFile": "/home/robbie/Desktop/proyectos_personales/tarea4-selenium/tests/ogin_happy_path.test.js",
+          "file": "/tests/ogin_happy_path.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Login - Camino feliz\"",
+              "fullTitle": "Login - Camino feliz \"before each\" hook in \"Login - Camino feliz\"",
+              "timedOut": false,
+              "duration": 340,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();",
+              "err": {},
+              "uuid": "ec589912-763b-42dc-9a37-1f408d6ff28d",
+              "parentUUID": "733f0e81-80cd-4cb8-9b31-add5f6bd7b1a",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Login - Camino feliz\"",
+              "fullTitle": "Login - Camino feliz \"after each\" hook in \"Login - Camino feliz\"",
+              "timedOut": false,
+              "duration": 52,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "c90ada4b-df66-478c-b662-0b640292cd48",
+              "parentUUID": "733f0e81-80cd-4cb8-9b31-add5f6bd7b1a",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Debe permitir iniciar sesión con credenciales válidas",
+              "fullTitle": "Login - Camino feliz Debe permitir iniciar sesión con credenciales válidas",
+              "timedOut": false,
+              "duration": 674,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  // 1. Ir a la página de login\n  await driver.get(`${BASE_URL}/login`);\n  // 2. Buscar los elementos del formulario\n  const usernameInput = await driver.findElement(By.id(\"username\"));\n  const passwordInput = await driver.findElement(By.id(\"password\"));\n  const loginButton   = await driver.findElement(By.id(\"btnLogin\"));\n  // 3. Escribir usuario y contraseña VÁLIDOS (admin / 1234)\n  await usernameInput.sendKeys(USERNAME);\n  await passwordInput.sendKeys(PASSWORD);\n  // 4. Click en \"Iniciar sesión\"\n  await loginButton.click();\n  // 5. Esperar a que aparezca el dashboard\n  await driver.wait(until.elementLocated(By.id(\"dashboard\")), 10000);\n  const dashboard = await driver.findElement(By.id(\"dashboard\"));\n  const isDisplayed = await dashboard.isDisplayed();\n  expect(isDisplayed).to.be.true;\n  // 6. Screenshot de éxito\n  await takeScreenshot(driver, \"login-camino-feliz\");\n} catch (error) {\n  // Si algo falla, tomamos screenshot de error también\n  await takeScreenshot(driver, \"login-camino-feliz-error\");\n  throw error;\n}",
+              "err": {},
+              "uuid": "7dc87d80-0982-45a1-b682-119929b7b6ca",
+              "parentUUID": "733f0e81-80cd-4cb8-9b31-add5f6bd7b1a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7dc87d80-0982-45a1-b682-119929b7b6ca"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 674,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "2b039fc3-6de3-47a0-83e3-b5fc8a1910a1",
+          "title": "Productos - Crear producto (camino feliz)",
+          "fullFile": "/home/robbie/Desktop/proyectos_personales/tarea4-selenium/tests/products_create_happy.test.js",
+          "file": "/tests/products_create_happy.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Productos - Crear producto (camino feliz)\"",
+              "fullTitle": "Productos - Crear producto (camino feliz) \"before each\" hook in \"Productos - Crear producto (camino feliz)\"",
+              "timedOut": false,
+              "duration": 343,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();",
+              "err": {},
+              "uuid": "5a2efb70-7c77-4d34-88ff-303dfa0ebed1",
+              "parentUUID": "2b039fc3-6de3-47a0-83e3-b5fc8a1910a1",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Productos - Crear producto (camino feliz)\"",
+              "fullTitle": "Productos - Crear producto (camino feliz) \"after each\" hook in \"Productos - Crear producto (camino feliz)\"",
+              "timedOut": false,
+              "duration": 51,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "d9447615-b17f-45d8-80bf-696d7d4f44ad",
+              "parentUUID": "2b039fc3-6de3-47a0-83e3-b5fc8a1910a1",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Debe crear un producto válido y mostrarlo en el listado",
+              "fullTitle": "Productos - Crear producto (camino feliz) Debe crear un producto válido y mostrarlo en el listado",
+              "timedOut": false,
+              "duration": 993,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const nombreProducto = `Producto Selenium ${Date.now()}`;\nconst precioProducto = \"250\";\ntry {\n  // 1. Ir al login\n  await driver.get(`${BASE_URL}/login`);\n  // 2. Login correcto\n  const usernameInput = await driver.findElement(By.id(\"username\"));\n  const passwordInput = await driver.findElement(By.id(\"password\"));\n  const loginButton   = await driver.findElement(By.id(\"btnLogin\"));\n  await usernameInput.sendKeys(USERNAME);\n  await passwordInput.sendKeys(PASSWORD);\n  await loginButton.click();\n  // 3. Esperar el dashboard\n  await driver.wait(until.elementLocated(By.id(\"dashboard\")), 10000);\n  // 4. Ir al módulo de productos\n  const linkProductos = await driver.findElement(By.id(\"linkProductos\"));\n  await linkProductos.click();\n  // 5. Esperar la tabla de productos\n  await driver.wait(until.elementLocated(By.id(\"productsTable\")), 10000);\n  // 6. Ir al formulario de \"Nuevo producto\"\n  const btnNuevoProducto = await driver.findElement(By.id(\"btnNuevoProducto\"));\n  await btnNuevoProducto.click();\n  // 7. Esperar el formulario de nuevo producto\n  await driver.wait(until.elementLocated(By.id(\"formNuevoProducto\")), 10000);\n  const nameInput  = await driver.findElement(By.id(\"productName\"));\n  const priceInput = await driver.findElement(By.id(\"productPrice\"));\n  const btnGuardar = await driver.findElement(By.id(\"btnGuardarProducto\"));\n  await nameInput.sendKeys(nombreProducto);\n  await priceInput.sendKeys(precioProducto);\n  await btnGuardar.click();\n  // 8. Volver al listado y verificar que el producto aparece\n  await driver.wait(until.elementLocated(By.id(\"productsTable\")), 10000);\n  const filas = await driver.findElements(By.css(\"#productsTable tbody tr\"));\n  expect(filas.length).to.be.greaterThan(0);\n  let encontrado = false;\n  for (const fila of filas) {\n    const celdas = await fila.findElements(By.css(\"td\"));\n    if (celdas.length >= 3) {\n      const nombre = await celdas[1].getText();\n      const precio = await celdas[2].getText();\n      if (nombre === nombreProducto && precio === precioProducto) {\n        encontrado = true;\n        break;\n      }\n    }\n  }\n  expect(encontrado).to.be.true;\n  await takeScreenshot(driver, \"productos-crear-camino-feliz\");\n} catch (error) {\n  await takeScreenshot(driver, \"productos-crear-camino-feliz-error\");\n  throw error;\n}",
+              "err": {},
+              "uuid": "507b7412-869f-442f-b31b-c1b55c730691",
+              "parentUUID": "2b039fc3-6de3-47a0-83e3-b5fc8a1910a1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "507b7412-869f-442f-b31b-c1b55c730691"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 993,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "d94dd292-0b0d-4fa6-af28-0d4b546a70af",
+          "title": "Productos - Crear producto (pruebas negativas y límites)",
+          "fullFile": "/home/robbie/Desktop/proyectos_personales/tarea4-selenium/tests/products_create_negative_limits.test.js",
+          "file": "/tests/products_create_negative_limits.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Productos - Crear producto (pruebas negativas y límites)\"",
+              "fullTitle": "Productos - Crear producto (pruebas negativas y límites) \"before each\" hook in \"Productos - Crear producto (pruebas negativas y límites)\"",
+              "timedOut": false,
+              "duration": 343,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();",
+              "err": {},
+              "uuid": "9670c30e-3e9c-4608-85b0-5ee53e5058e1",
+              "parentUUID": "d94dd292-0b0d-4fa6-af28-0d4b546a70af",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Productos - Crear producto (pruebas negativas y límites)\"",
+              "fullTitle": "Productos - Crear producto (pruebas negativas y límites) \"after each\" hook in \"Productos - Crear producto (pruebas negativas y límites)\"",
+              "timedOut": false,
+              "duration": 51,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "23d2f7b2-6538-4210-b23f-f881fe2ac8a3",
+              "parentUUID": "d94dd292-0b0d-4fa6-af28-0d4b546a70af",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "No debe crear producto con nombre vacío o precio inválido",
+              "fullTitle": "Productos - Crear producto (pruebas negativas y límites) No debe crear producto con nombre vacío o precio inválido",
+              "timedOut": false,
+              "duration": 991,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  const filasAntesCount = await loginYIrANuevoProducto();\n  const nameInput  = await driver.findElement(By.id(\"productName\"));\n  const priceInput = await driver.findElement(By.id(\"productPrice\"));\n  const btnGuardar = await driver.findElement(By.id(\"btnGuardarProducto\"));\n  // Caso 1: nombre vacío, precio 0 (inválido)\n  await nameInput.clear();\n  await priceInput.clear();\n  await nameInput.sendKeys(\"\");      // nombre vacío\n  await priceInput.sendKeys(\"0\");    // precio inválido (<= 0)\n  await btnGuardar.click();\n  // Debe redirigir de vuelta a /productos/nuevo con error\n  await driver.wait(until.elementLocated(By.id(\"productError\")), 10000);\n  const error = await driver.findElement(By.id(\"productError\"));\n  expect(await error.isDisplayed()).to.be.true;\n  // Volver al listado para verificar que NO se agregó fila\n  await driver.get(`${BASE_URL}/productos`);\n  await driver.wait(until.elementLocated(By.id(\"productsTable\")), 10000);\n  const filasDespues = await driver.findElements(By.css(\"#productsTable tbody tr\"));\n  const filasDespuesCount = filasDespues.length;\n  // El número de filas debe ser IGUAL al que teníamos antes\n  expect(filasDespuesCount).to.equal(filasAntesCount);\n  await takeScreenshot(driver, \"productos-crear-negativo-nombre-vacio-precio-invalido\");\n} catch (error) {\n  await takeScreenshot(driver, \"productos-crear-negativo-error\");\n  throw error;\n}",
+              "err": {},
+              "uuid": "b05e7df6-637c-4bdb-9508-441a0cf76518",
+              "parentUUID": "d94dd292-0b0d-4fa6-af28-0d4b546a70af",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "No debe crear producto con nombre demasiado largo",
+              "fullTitle": "Productos - Crear producto (pruebas negativas y límites) No debe crear producto con nombre demasiado largo",
+              "timedOut": false,
+              "duration": 905,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  const filasAntesCount = await loginYIrANuevoProducto();\n  const nameInput  = await driver.findElement(By.id(\"productName\"));\n  const priceInput = await driver.findElement(By.id(\"productPrice\"));\n  const btnGuardar = await driver.findElement(By.id(\"btnGuardarProducto\"));\n  // Generar un nombre de más de 100 caracteres\n  const nombreLargo = \"X\".repeat(120); // 120 caracteres\n  const precioValido = \"100\";\n  await nameInput.clear();\n  await priceInput.clear();\n  await nameInput.sendKeys(nombreLargo);\n  await priceInput.sendKeys(precioValido);\n  await btnGuardar.click();\n  // Debe mostrar error también (por longitud)\n  await driver.wait(until.elementLocated(By.id(\"productError\")), 10000);\n  const error = await driver.findElement(By.id(\"productError\"));\n  expect(await error.isDisplayed()).to.be.true;\n  // Volver al listado y verificar que NO se agregó producto nuevo\n  await driver.get(`${BASE_URL}/productos`);\n  await driver.wait(until.elementLocated(By.id(\"productsTable\")), 10000);\n  const filasDespues = await driver.findElements(By.css(\"#productsTable tbody tr\"));\n  const filasDespuesCount = filasDespues.length;\n  expect(filasDespuesCount).to.equal(filasAntesCount);\n  await takeScreenshot(driver, \"productos-crear-negativo-nombre-largo\");\n} catch (error) {\n  await takeScreenshot(driver, \"productos-crear-negativo-nombre-largo-error\");\n  throw error;\n}",
+              "err": {},
+              "uuid": "400cefa6-459b-4274-9ec4-5a446b56418d",
+              "parentUUID": "d94dd292-0b0d-4fa6-af28-0d4b546a70af",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b05e7df6-637c-4bdb-9508-441a0cf76518",
+            "400cefa6-459b-4274-9ec4-5a446b56418d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1896,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "095e359d-50ee-46cd-9a75-fdd8f755750c",
+          "title": "Productos - Eliminar producto (camino feliz)",
+          "fullFile": "/home/robbie/Desktop/proyectos_personales/tarea4-selenium/tests/products_delete_happy.test.js",
+          "file": "/tests/products_delete_happy.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Productos - Eliminar producto (camino feliz)\"",
+              "fullTitle": "Productos - Eliminar producto (camino feliz) \"before each\" hook in \"Productos - Eliminar producto (camino feliz)\"",
+              "timedOut": false,
+              "duration": 341,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();",
+              "err": {},
+              "uuid": "39e9bcdf-e9ea-46ed-9a5e-f1fee534bd28",
+              "parentUUID": "095e359d-50ee-46cd-9a75-fdd8f755750c",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Productos - Eliminar producto (camino feliz)\"",
+              "fullTitle": "Productos - Eliminar producto (camino feliz) \"after each\" hook in \"Productos - Eliminar producto (camino feliz)\"",
+              "timedOut": false,
+              "duration": 51,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "7bcf8dc3-d15c-462d-9c43-e45d560619cc",
+              "parentUUID": "095e359d-50ee-46cd-9a75-fdd8f755750c",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Debe permitir eliminar un producto del listado",
+              "fullTitle": "Productos - Eliminar producto (camino feliz) Debe permitir eliminar un producto del listado",
+              "timedOut": false,
+              "duration": 1299,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  // 1. Login\n  await driver.get(`${BASE_URL}/login`);\n  const usernameInput = await driver.findElement(By.id(\"username\"));\n  const passwordInput = await driver.findElement(By.id(\"password\"));\n  const loginButton   = await driver.findElement(By.id(\"btnLogin\"));\n  await usernameInput.sendKeys(USERNAME);\n  await passwordInput.sendKeys(PASSWORD);\n  await loginButton.click();\n  // 2. Dashboard\n  await driver.wait(until.elementLocated(By.id(\"dashboard\")), 10000);\n  // 3. Ir a productos\n  const linkProductos = await driver.findElement(By.id(\"linkProductos\"));\n  await linkProductos.click();\n  await driver.wait(until.elementLocated(By.id(\"productsTable\")), 10000);\n  // 4. Contar filas antes de eliminar\n  let filasAntes = await driver.findElements(By.css(\"#productsTable tbody tr\"));\n  expect(filasAntes.length).to.be.greaterThan(0);\n  const filasAntesCount = filasAntes.length;\n  // 5. Tomar la primera fila y usar el FORM para eliminar\n  const primeraFila = filasAntes[0];\n  // Seleccionar el FORM, no el botón\n  const formEliminar = await primeraFila.findElement(By.css(\"form\"));\n  await formEliminar.submit();\n  // 6. Esperar a que recargue el listado\n  await driver.wait(until.elementLocated(By.id(\"productsTable\")), 10000);\n  // Esperar un poquito extra para estabilidad\n  await driver.sleep(500);\n  const filasDespues = await driver.findElements(By.css(\"#productsTable tbody tr\"));\n  const filasDespuesCount = filasDespues.length;\n  // 7. Verificar que ahora hay menos filas\n  expect(filasDespuesCount).to.be.lessThan(filasAntesCount);\n  await takeScreenshot(driver, \"productos-eliminar-camino-feliz\");\n} catch (error) {\n  await takeScreenshot(driver, \"productos-eliminar-camino-feliz-error\");\n  throw error;\n}",
+              "err": {},
+              "uuid": "b583b318-0170-4b52-ae6b-eec1dcb3efce",
+              "parentUUID": "095e359d-50ee-46cd-9a75-fdd8f755750c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b583b318-0170-4b52-ae6b-eec1dcb3efce"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1299,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "b99f3156-b831-42b7-83c2-83d934ab4fc9",
+          "title": "Productos - Editar producto (camino feliz)",
+          "fullFile": "/home/robbie/Desktop/proyectos_personales/tarea4-selenium/tests/products_edit_happy.test.js",
+          "file": "/tests/products_edit_happy.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Productos - Editar producto (camino feliz)\"",
+              "fullTitle": "Productos - Editar producto (camino feliz) \"before each\" hook in \"Productos - Editar producto (camino feliz)\"",
+              "timedOut": false,
+              "duration": 341,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();",
+              "err": {},
+              "uuid": "0a1ec3dd-0883-4cdc-8f0d-4182792a31cf",
+              "parentUUID": "b99f3156-b831-42b7-83c2-83d934ab4fc9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Productos - Editar producto (camino feliz)\"",
+              "fullTitle": "Productos - Editar producto (camino feliz) \"after each\" hook in \"Productos - Editar producto (camino feliz)\"",
+              "timedOut": false,
+              "duration": 51,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "55c9c6e3-4a83-4038-ae27-97eaf7c077a0",
+              "parentUUID": "b99f3156-b831-42b7-83c2-83d934ab4fc9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Debe permitir editar un producto existente y mostrar los cambios en el listado",
+              "fullTitle": "Productos - Editar producto (camino feliz) Debe permitir editar un producto existente y mostrar los cambios en el listado",
+              "timedOut": false,
+              "duration": 872,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const nuevoNombre = `Producto Editado ${Date.now()}`;\nconst nuevoPrecio = \"999\";\ntry {\n  // 1. Ir al login e iniciar sesión\n  await driver.get(`${BASE_URL}/login`);\n  const usernameInput = await driver.findElement(By.id(\"username\"));\n  const passwordInput = await driver.findElement(By.id(\"password\"));\n  const loginButton   = await driver.findElement(By.id(\"btnLogin\"));\n  await usernameInput.sendKeys(USERNAME);\n  await passwordInput.sendKeys(PASSWORD);\n  await loginButton.click();\n  // 2. Esperar el dashboard\n  await driver.wait(until.elementLocated(By.id(\"dashboard\")), 10000);\n  // 3. Ir al módulo de productos\n  const linkProductos = await driver.findElement(By.id(\"linkProductos\"));\n  await linkProductos.click();\n  // 4. Esperar la tabla de productos\n  await driver.wait(until.elementLocated(By.id(\"productsTable\")), 10000);\n  const filas = await driver.findElements(By.css(\"#productsTable tbody tr\"));\n  expect(filas.length).to.be.greaterThan(0);\n  // 5. Tomar la PRIMERA fila y hacer clic en \"Editar\"\n  const primeraFila = filas[0];\n  const btnEditar = await primeraFila.findElement(By.css(\".btnEditar\"));\n  await btnEditar.click();\n  // 6. Esperar el formulario de edición\n  await driver.wait(until.elementLocated(By.id(\"formEditarProducto\")), 10000);\n  const nameInput  = await driver.findElement(By.id(\"editProductName\"));\n  const priceInput = await driver.findElement(By.id(\"editProductPrice\"));\n  const btnActualizar = await driver.findElement(By.id(\"btnActualizarProducto\"));\n  // 7. Limpiar y escribir nuevos datos\n  await nameInput.clear();\n  await priceInput.clear();\n  await nameInput.sendKeys(nuevoNombre);\n  await priceInput.sendKeys(nuevoPrecio);\n  await btnActualizar.click();\n  // 8. De nuevo en el listado, verificar cambios\n  await driver.wait(until.elementLocated(By.id(\"productsTable\")), 10000);\n  const filasDespues = await driver.findElements(By.css(\"#productsTable tbody tr\"));\n  let encontrado = false;\n  for (const fila of filasDespues) {\n    const celdas = await fila.findElements(By.css(\"td\"));\n    if (celdas.length >= 3) {\n      const nombre = await celdas[1].getText();\n      const precio = await celdas[2].getText();\n      if (nombre === nuevoNombre && precio === nuevoPrecio) {\n        encontrado = true;\n        break;\n      }\n    }\n  }\n  expect(encontrado).to.be.true;\n  await takeScreenshot(driver, \"productos-editar-camino-feliz\");\n} catch (error) {\n  await takeScreenshot(driver, \"productos-editar-camino-feliz-error\");\n  throw error;\n}",
+              "err": {},
+              "uuid": "923b2791-f9ca-466b-8a99-d5c34812d301",
+              "parentUUID": "b99f3156-b831-42b7-83c2-83d934ab4fc9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "923b2791-f9ca-466b-8a99-d5c34812d301"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 872,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "8217c1fe-2b84-485f-a03e-80c2011e6e62",
+          "title": "Productos - Editar producto (pruebas negativas y límites)",
+          "fullFile": "/home/robbie/Desktop/proyectos_personales/tarea4-selenium/tests/products_edit_negative_limits.test.js",
+          "file": "/tests/products_edit_negative_limits.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Productos - Editar producto (pruebas negativas y límites)\"",
+              "fullTitle": "Productos - Editar producto (pruebas negativas y límites) \"before each\" hook in \"Productos - Editar producto (pruebas negativas y límites)\"",
+              "timedOut": false,
+              "duration": 330,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();",
+              "err": {},
+              "uuid": "a61360c0-27cc-4154-b06e-1b47cbf1e2de",
+              "parentUUID": "8217c1fe-2b84-485f-a03e-80c2011e6e62",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Productos - Editar producto (pruebas negativas y límites)\"",
+              "fullTitle": "Productos - Editar producto (pruebas negativas y límites) \"after each\" hook in \"Productos - Editar producto (pruebas negativas y límites)\"",
+              "timedOut": false,
+              "duration": 51,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "f8867075-652c-4efe-9d2b-eae7c5451af8",
+              "parentUUID": "8217c1fe-2b84-485f-a03e-80c2011e6e62",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "No debe permitir editar con nombre vacío y precio inválido",
+              "fullTitle": "Productos - Editar producto (pruebas negativas y límites) No debe permitir editar con nombre vacío y precio inválido",
+              "timedOut": false,
+              "duration": 911,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  const { nombreAntes, precioAntes } = await loginYEntrarAEditarObteniendoValores();\n  const nameInput  = await driver.findElement(By.id(\"editProductName\"));\n  const priceInput = await driver.findElement(By.id(\"editProductPrice\"));\n  const btnActualizar = await driver.findElement(By.id(\"btnActualizarProducto\"));\n  // Datos inválidos\n  await nameInput.clear();\n  await priceInput.clear();\n  await nameInput.sendKeys(\"\");   // nombre vacío\n  await priceInput.sendKeys(\"0\"); // precio inválido\n  await btnActualizar.click();\n  // Debe mostrar error\n  await driver.wait(until.elementLocated(By.id(\"productEditError\")), 10000);\n  const error = await driver.findElement(By.id(\"productEditError\"));\n  expect(await error.isDisplayed()).to.be.true;\n  // Volver al listado\n  await driver.get(`${BASE_URL}/productos`);\n  await driver.wait(until.elementLocated(By.id(\"productsTable\")), 10000);\n  // Verificar que NO se guardaron cambios\n  const filas = await driver.findElements(By.css(\"#productsTable tbody tr\"));\n  const celdas = await filas[0].findElements(By.css(\"td\"));\n  const nombreDespues = await celdas[1].getText();\n  const precioDespues = await celdas[2].getText();\n  expect(nombreDespues).to.equal(nombreAntes);\n  expect(precioDespues).to.equal(precioAntes);\n  await takeScreenshot(driver, \"productos-editar-negativo-nombre-vacio-precio-invalido\");\n} catch (error) {\n  await takeScreenshot(driver, \"productos-editar-negativo-error\");\n  throw error;\n}",
+              "err": {},
+              "uuid": "4a80142f-0ae3-40c5-a467-8625ee91a37f",
+              "parentUUID": "8217c1fe-2b84-485f-a03e-80c2011e6e62",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "No debe permitir editar con nombre demasiado largo",
+              "fullTitle": "Productos - Editar producto (pruebas negativas y límites) No debe permitir editar con nombre demasiado largo",
+              "timedOut": false,
+              "duration": 961,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  const { nombreAntes, precioAntes } = await loginYEntrarAEditarObteniendoValores();\n  const nameInput  = await driver.findElement(By.id(\"editProductName\"));\n  const priceInput = await driver.findElement(By.id(\"editProductPrice\"));\n  const btnActualizar = await driver.findElement(By.id(\"btnActualizarProducto\"));\n  const nombreLargo = \"X\".repeat(150); // límite excedido\n  await nameInput.clear();\n  await priceInput.clear();\n  await nameInput.sendKeys(nombreLargo);\n  await priceInput.sendKeys(\"100\");\n  await btnActualizar.click();\n  // Mensaje de error\n  await driver.wait(until.elementLocated(By.id(\"productEditError\")), 10000);\n  const error = await driver.findElement(By.id(\"productEditError\"));\n  expect(await error.isDisplayed()).to.be.true;\n  // Volver al listado\n  await driver.get(`${BASE_URL}/productos`);\n  await driver.wait(until.elementLocated(By.id(\"productsTable\")), 10000);\n  // Verificar que NO cambió nada\n  const filas = await driver.findElements(By.css(\"#productsTable tbody tr\"));\n  const celdas = await filas[0].findElements(By.css(\"td\"));\n  const nombreDespues = await celdas[1].getText();\n  const precioDespues = await celdas[2].getText();\n  expect(nombreDespues).to.equal(nombreAntes);\n  expect(precioDespues).to.equal(precioAntes);\n  await takeScreenshot(driver, \"productos-editar-negativo-nombre-largo\");\n} catch (error) {\n  await takeScreenshot(driver, \"productos-editar-negativo-nombre-largo-error\");\n  throw error;\n}",
+              "err": {},
+              "uuid": "c34ad52c-5ef9-41cb-9e8a-187650a9f540",
+              "parentUUID": "8217c1fe-2b84-485f-a03e-80c2011e6e62",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4a80142f-0ae3-40c5-a467-8625ee91a37f",
+            "c34ad52c-5ef9-41cb-9e8a-187650a9f540"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1872,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "aafc6d1b-99c6-4a4e-8e38-c90ad8b17ddc",
+          "title": "Smoke test - Cargar página principal",
+          "fullFile": "/home/robbie/Desktop/proyectos_personales/tarea4-selenium/tests/smoke.test.js",
+          "file": "/tests/smoke.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Smoke test - Cargar página principal\"",
+              "fullTitle": "Smoke test - Cargar página principal \"before each\" hook in \"Smoke test - Cargar página principal\"",
+              "timedOut": false,
+              "duration": 331,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();",
+              "err": {},
+              "uuid": "947009af-16cc-40e4-a37d-63d88fb3bedb",
+              "parentUUID": "aafc6d1b-99c6-4a4e-8e38-c90ad8b17ddc",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Smoke test - Cargar página principal\"",
+              "fullTitle": "Smoke test - Cargar página principal \"after each\" hook in \"Smoke test - Cargar página principal\"",
+              "timedOut": false,
+              "duration": 52,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "939f03f0-7138-42c0-af41-eb2120e556c6",
+              "parentUUID": "aafc6d1b-99c6-4a4e-8e38-c90ad8b17ddc",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Debe cargar la página principal sin errores",
+              "fullTitle": "Smoke test - Cargar página principal Debe cargar la página principal sin errores",
+              "timedOut": false,
+              "duration": 2235,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  await driver.get(BASE_URL);\n  // Espera un poco para que cargue\n  await driver.sleep(2000);\n  // Sacar un screenshot para confirmar que todo abre\n  await takeScreenshot(driver, \"smoke-home\");\n  // Ejemplo de verificación muy simple:\n  const title = await driver.getTitle();\n  console.log(\"Título de la página:\", title);\n  // Solo comprobamos que el título sea una cadena (más adelante haremos asserts más específicos)\n  expect(title).to.be.a(\"string\");\n} catch (error) {\n  await takeScreenshot(driver, \"smoke-home-error\");\n  throw error;\n}",
+              "err": {},
+              "uuid": "1cbdbd59-2797-4157-806a-992836dc9610",
+              "parentUUID": "aafc6d1b-99c6-4a4e-8e38-c90ad8b17ddc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1cbdbd59-2797-4157-806a-992836dc9610"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2235,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.5"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
